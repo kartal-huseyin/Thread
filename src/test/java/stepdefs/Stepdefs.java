@@ -2,6 +2,7 @@ package stepdefs;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
 
 
 public class Stepdefs  {
@@ -15,6 +16,10 @@ public class Stepdefs  {
     public void two() {
         System.out.println("a" +
                 "");
+
+
+        Assert.assertEquals("a","a");
+
     }
 
 

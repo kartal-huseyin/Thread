@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/java/feature",
         glue = "stepdefs",
-        plugin={"html:target//Pcucumber-reports2.html",
+        plugin={"pretty", "html:target//Pcucumber-reports2.html",
                 "json:target/json-reports/Pcucumber2.json",
                 "junit:target/xml-report/Pcucumber2.xml"},
         tags = "@smoketest"
