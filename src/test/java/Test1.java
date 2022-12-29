@@ -23,7 +23,7 @@ public class Test1 {
 
     }
 
-    @Test
+/*    @Test
     public void test02() throws InterruptedException {
         System.out.println("Chrome Test Starts at:  " + Instant.now());
         System.out.println("The Thread ID for CHROME Is :  " + Thread.currentThread().getId());
@@ -35,14 +35,7 @@ public class Test1 {
         driver.get("https://google.com");
         Thread.sleep(5000);
         driver.get("https://amazon.com");
-
-
-
-
-
-
-
-    }
+    }*/
 
 }
 
