@@ -60,38 +60,9 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.0.0-M1</version>
-                <configuration>
-                    <testFailureIgnore>true</testFailureIgnore>
-                    <skipTests>false</skipTests>
-
-                    <includes>
-                        <include>**/runners/*TestRunner*.java</include>
-                    </includes>
-                </configuration>
-
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M1</version>
                 <configuration>
-                    <parallel>classes</parallel>
-
-                    <threadCount>4</threadCount>
-                    <forkCount>1</forkCount>
-                    <reuseForks>false</reuseForks>
-                    <argLine>-Duser.language=en</argLine>
-                    <argLine>-Xmx1024m</argLine>
-                    <argLine>-XX:MaxPermSize=256m</argLine>
-                    <argLine>-Dfile.encoding=UTF-8</argLine>
-                    <useFile>false</useFile>
-                    <includes>
-                        <include>**/runners/*TestRunner*.java</include>
-                    </includes>
                     <testFailureIgnore>true</testFailureIgnore>
-
                 </configuration>
             </plugin>
             <plugin>
@@ -107,19 +78,33 @@
                         </goals>
                         <configuration>
                             <projectName>cucumber-jvm-example</projectName>
+                            <!-- optional, per documentation set this to "true" to bypass generation of Cucumber Reports entirely, defaults to false if not specified -->
+                            <skip>false</skip>
+                            <!-- output directory for the generated report -->
                             <outputDirectory>${project.build.directory}</outputDirectory>
-                            <inputDirectory>${project.build.directory}</inputDirectory>
+                            <!-- optional, defaults to outputDirectory if not specified -->
+                            <inputDirectory>${project.build.directory}/jsonReports</inputDirectory>
                             <jsonFiles>
-                                <param>**/json-reports/*.json</param>
-                            </jsonFiles><classificationFiles>->
-                            <param>sample.properties</param>
-                            <param>other.properties</param>
-
-                        </classificationFiles>
+                                <!-- supports wildcard or name pattern -->
+                                <param>**/*.json</param>
+                            </jsonFiles>
+                            <!-- optional, defaults to outputDirectory if not specified -->
+                            <classificationDirectory>${project.build.directory}/classifications</classificationDirectory>
+                            <classificationFiles>
+                                <!-- supports wildcard or name pattern -->
+                                <param>sample.properties</param>
+                                <param>other.properties</param>
+                            </classificationFiles>
+                            <parallelTesting>false</parallelTesting>
+                            <!-- optional, set true to group features by its Ids -->
+                            <mergeFeaturesById>false</mergeFeaturesById>
+                            <!-- optional, set true to get a final report with latest results of the same test from different test runs -->
+                            <mergeFeaturesWithRetest>false</mergeFeaturesWithRetest>
+                            <!-- optional, set true to fail build on test failures -->
+                            <checkBuildResult>false</checkBuildResult>
                         </configuration>
                     </execution>
                 </executions>
-
             </plugin>
         </plugins>
     </build>
