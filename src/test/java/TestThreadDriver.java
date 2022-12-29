@@ -1,6 +1,7 @@
-/*
+
+import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.Test;
+
 
 import java.time.Instant;
 
@@ -40,6 +41,3 @@ public class TestThreadDriver {
 
 }
 
-
-
-*/
