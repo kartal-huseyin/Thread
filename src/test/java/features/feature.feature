@@ -1,3 +1,4 @@
+@one
 Feature: a
   Scenario: b
     Given one
